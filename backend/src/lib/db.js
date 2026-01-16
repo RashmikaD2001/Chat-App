@@ -2,7 +2,7 @@ import mongoose, { connect } from "mongoose"
 
 export const connectDB = async () => {
     try{
-        const { MONGO_URI } = process.env
+        const { MONGO_URI } = ENV
 
         if(!MONGO_URI) throw new Error("MONGODB Connection URL is missing")
 

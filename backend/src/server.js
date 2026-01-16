@@ -5,13 +5,12 @@ import path from "path"
 import authRoutes from "./routes/auth.route.js";
 import messageRoutes from "./routes/message.route.js"
 import { connectDB } from './lib/db.js';
-
-dotenv.config();
+import { ENV } from "./env.js"
 
 const app = express();
 const __dirname = path.resolve()
 
-const port = process.env.PORT || 4000;
+const port = ENV.PORT;
 
 app.use(express.json()) // req.body
 
@@ -19,7 +18,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/message", messageRoutes);
 
 // make ready for deployment
-if (process.env.NODE_ENV === "production") {
+if (ENV.NODE_ENV === "production") {
     // static assets - react app
     app.use(
         express.static(

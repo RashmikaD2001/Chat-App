@@ -3,7 +3,7 @@ import jwt from "jsonwebtoken"
 export const generateToken = (userId, res) => {
     // create a token
 
-    const { JWT_SECRET, NODE_ENV} = process.env
+    const { JWT_SECRET, NODE_ENV} = ENV
 
     if(!JWT_SECRET || !NODE_ENV) throw new Error ("Environment Variables are missing")
 
