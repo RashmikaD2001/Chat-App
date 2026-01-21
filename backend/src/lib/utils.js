@@ -1,4 +1,5 @@
 import jwt from "jsonwebtoken"
+import { ENV } from "./env"
 
 export const generateToken = (userId, res) => {
     // create a token
@@ -7,7 +8,7 @@ export const generateToken = (userId, res) => {
 
     if(!JWT_SECRET || !NODE_ENV) throw new Error ("Environment Variables are missing")
 
-    const token = jwt.sign({userId}, process.env.JWT_SECRET,{
+    const token = jwt.sign({userId}, ENV.JWT_SECRET,{
         expiresIn: "7d"
     })
 
